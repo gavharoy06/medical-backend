@@ -4,10 +4,8 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const pool = new Pool({
-  connectionString: process.env.DB_STRING,
-    ssl: process.env.NODE_ENV === 'production' 
-    ? { rejectUnauthorized: false } 
-    : false
+  connectionString: process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false } 
 })
 
 pool.connect()
