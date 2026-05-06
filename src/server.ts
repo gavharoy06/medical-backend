@@ -1,7 +1,7 @@
-import express, { Request, Response } from "express";
+import express from "express";
+import medRouter from "./medRouters/med.routers";
 import "dotenv/config";
 import cors from "cors";
-import { docRouter } from "./modules/doctors/doctors.router";
 
 
 const app = express();
@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(cors());
 
 
-app.use("/med", docRouter)
+app.use("/med", medRouter)
 
 
 app.listen(port, () => {

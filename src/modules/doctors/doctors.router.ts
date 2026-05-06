@@ -1,7 +1,8 @@
-import express from "express";
-import { doctors } from "./doctors.controller";
+import express, { Router } from "express";
+import { createDoctorController, doctors } from "./doctors.controller";
+import { authMiddleware, roleMiddleware } from '../../middlewares/auth.middleware'
 
+export const docRouter = Router()
 
-export const docRouter = express.Router();
-
-docRouter.get("/doctor", doctors);
+docRouter.post("/doctors", doctors);
+docRouter.post('/new', authMiddleware, roleMiddleware('admin'), createDoctorController)
