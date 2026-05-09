@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 dotenv.config()
 
-interface Payload {
+type Payload ={
   user_id: number
   role: string
 }

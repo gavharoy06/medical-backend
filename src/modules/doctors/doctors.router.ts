@@ -4,5 +4,5 @@ import { authMiddleware, roleMiddleware } from '../../middlewares/auth.middlewar
 
 export const docRouter = Router()
 
-docRouter.post("/doctors", doctors);
+docRouter.get("/doctors", doctors);
 docRouter.post('/new', authMiddleware, roleMiddleware('admin'), createDoctorController)

@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import { verifyAccessToken } from '../utils/jwt'
 
-// Request ga user ma'lumotini qo'shamiz
 declare global {
   namespace Express {
     interface Request {
@@ -18,7 +17,6 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
       return
     }
 
-    // "Bearer eyJhbG..." dan faqat token qismini olamiz
     const token = header.split(' ')[1]
     const payload = verifyAccessToken(token)
 
@@ -29,7 +27,6 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
   }
 }
 
-// Rol tekshirish
 export const roleMiddleware = (...roles: string[]) => {
   return (req: Request, res: Response, next: NextFunction) => {
     if (!req.user || !roles.includes(req.user.role)) {
